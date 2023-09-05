@@ -2,22 +2,16 @@ const express = require('express')
 
 const router = express.Router();
 
+const userController  = require('../controllers/userController');
+
 
 
 // all users routes
-const users = [
-    {
-        name:"john",
-        age:24
-    },
-    {
-        name:"james",
-        age:25
-    },
-];
-router.get('/users', (req,res) => {
-    return res.json(users);
-})
+
+router.get('/users', userController.getUsers);
+
+// register
+router.post('/user',userController.registerUser);
 
 
 
