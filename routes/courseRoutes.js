@@ -2,19 +2,23 @@ const express = require('express')
 
 const router = express.Router();
 
+const courseController = require('../controllers/courseController');
 
 
 
-const courses = [
-    {title:"First course", price:3000, duration:"120 mins"},
-    {title:"Second course", price:3000, duration:"120 mins"},
-    {title:"Third course", price:3000, duration:"120 mins"},
-];
 
 // get all courses
-router.get('/courses', (req, res) => {
-    return res.json(courses);
-})
+
+
+router.get('/courses', courseController.getCourse);
+// create new course
+
+router.post('/course', courseController.createCourse);
+
+// get unique course
+
+router.get('/course/:coursecode', courseController.getUnique);
+
 
 
 
